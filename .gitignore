@@ -2,3 +2,5 @@
 dnsseed*
 dnsstats.log
 ipv4_nodes.dat
+config.sh
+run.sh
