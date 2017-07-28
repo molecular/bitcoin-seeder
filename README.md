@@ -18,6 +18,7 @@ To use the .sh scripts
 ```
 #> cp config_example.sh config.sh
 #> edit config.sh
+#> ./do_filter_dump.sh
 ```
 
 If you want you can put do_filter_dump.sh into your crontab.
