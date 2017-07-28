@@ -1,6 +1,29 @@
 Bitcoin-seeder
 ==============
 
+### About this fork
+
+This is a quick adaptation of sipa/bitcoin-seeder for use with BitcoinCash to be able to feed a DNS seed server with data.
+
+The idea is to be able to run the crawler separately from the DNS server. So you start bitcoin-seeder with "-d 0" (no DNS server thread) so it will just crawl the bitcoin p2p net collecting peer info. Conveniently, bitcoin-seeder dumps this peer-list periodically so filtering and pushing it to some other remote host (DNS server) is a simple matter of some shell scripts (also added to this repo in root folder)
+
+Main changes are
+  * add NODE_CASH service bit related values to whitelist
+  * cherry-pick some convenience commits from sickpig/bitcoin-seeder
+  * dump dnsseed.dump every 100s (not exponetially backing off by a factor of up to 2^5)
+  * add some .sh scripts to post-process dnsseed.dump (filtering)
+
+To use the .sh scripts 
+
+```
+#> cp config_example.sh config.sh
+#> edit config.sh
+```
+
+If you want you can put do_filter_dump.sh into your crontab.
+
+### Intro
+
 Bitcoin-seeder is a crawler for the Bitcoin network, which exposes a list
 of reliable nodes via a built-in DNS server.
 
