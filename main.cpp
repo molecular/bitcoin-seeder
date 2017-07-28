@@ -151,6 +151,13 @@ public:
         filter_whitelist.insert(5);
         filter_whitelist.insert(9);
         filter_whitelist.insert(13);
+        filter_whitelist.insert(17); //BU: add support for NODE_XTHIN service bit (1 << 4 | 1 << 0)
+        filter_whitelist.insert(0x20); // BITCOIN_CASH
+        filter_whitelist.insert(0x21); // BITCOIN_CASH | NETWORK
+        filter_whitelist.insert(0x25); // BITCOIN_CASH | NETWORK | BLOOM
+        filter_whitelist.insert(0x35); // BITCOIN_CASH | NETOWRK | XTHIN | BLOOM
+        filter_whitelist.insert(0x21); // BITCOIN_CASH | NETWORK
+        filter_whitelist.insert(0x31); // BITCOIN_CASH | NETWORK | XTHIN 
     }
     if (host != NULL && ns == NULL) showHelp = true;
     if (showHelp) fprintf(stderr, help, argv[0]);
@@ -333,7 +340,7 @@ int StatCompare(const CAddrReport& a, const CAddrReport& b) {
 extern "C" void* ThreadDumper(void*) {
   int count = 0;
   do {
-    Sleep(100000 << count); // First 100s, than 200s, 400s, 800s, 1600s, and then 3200s forever
+    Sleep(100000); // First 100s, than 200s, 400s, 800s, 1600s, and then 3200s forever
     if (count < 5)
         count++;
     {
@@ -397,11 +404,17 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"dnsseed.bluematt.me", "bitseed.xf2.org", "dnsseed.bitcoin.dashjr.org", "seed.bitcoin.sipa.be", ""};
-static const string testnet_seeds[] = {"testnet-seed.alexykot.me",
-                                       "testnet-seed.bitcoin.petertodd.org",
-                                       "testnet-seed.bluematt.me",
-                                       "testnet-seed.bitcoin.schildbach.de",
+static const string mainnet_seeds[] = { "seed.bitcoinabc.org", 
+                                        "seed-abc.bitcoinforks.org", 
+                                        "btccash-seeder.bitcoinunlimited.info", 
+                                        "seed.bitprim.org", 
+                                        "seed.deadalnix.me", 
+                                        "seeder.criptolayer.net", 
+                                        ""};
+static const string testnet_seeds[] = {"testnet-seed.bitcoinunlimited.info",
+                                       "testnet-seed.bitprim.org",
+                                       "testnet-seed.deadalnix.me",
+                                       "testnet-seeder.criptolayer.net",
                                        ""};
 static const string *seeds = mainnet_seeds;
 
