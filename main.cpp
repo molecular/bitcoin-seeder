@@ -152,12 +152,40 @@ public:
         filter_whitelist.insert(9);
         filter_whitelist.insert(13);
         filter_whitelist.insert(17); //BU: add support for NODE_XTHIN service bit (1 << 4 | 1 << 0)
-        filter_whitelist.insert(0x20); // BITCOIN_CASH
-        filter_whitelist.insert(0x21); // BITCOIN_CASH | NETWORK
-        filter_whitelist.insert(0x25); // BITCOIN_CASH | NETWORK | BLOOM
-        filter_whitelist.insert(0x35); // BITCOIN_CASH | NETOWRK | XTHIN | BLOOM
-        filter_whitelist.insert(0x21); // BITCOIN_CASH | NETWORK
-        filter_whitelist.insert(0x31); // BITCOIN_CASH | NETWORK | XTHIN 
+
+        // bitcoin cash
+        filter_whitelist.insert(0x20); // CASH
+        filter_whitelist.insert(0x30); // CASH | XTHIN
+        filter_whitelist.insert(0x28); // CASH | WITNESS
+        filter_whitelist.insert(0x38); // CASH | XTHIN | WITNESS
+        filter_whitelist.insert(0x24); // CASH | BLOOM
+        filter_whitelist.insert(0x34); // CASH | XTHIN | BLOOM
+        filter_whitelist.insert(0x2c); // CASH | WITNESS | BLOOM
+        filter_whitelist.insert(0x3c); // CASH | XTHIN | WITNESS | BLOOM
+        filter_whitelist.insert(0x22); // CASH | GETUTXOS
+        filter_whitelist.insert(0x32); // CASH | XTHIN | GETUTXOS
+        filter_whitelist.insert(0x2a); // CASH | WITNESS | GETUTXOS
+        filter_whitelist.insert(0x3a); // CASH | XTHIN | WITNESS | GETUTXOS
+        filter_whitelist.insert(0x26); // CASH | BLOOM | GETUTXOS
+        filter_whitelist.insert(0x36); // CASH | XTHIN | BLOOM | GETUTXOS
+        filter_whitelist.insert(0x2e); // CASH | WITNESS | BLOOM | GETUTXOS
+        filter_whitelist.insert(0x3e); // CASH | XTHIN | WITNESS | BLOOM | GETUTXOS
+        filter_whitelist.insert(0x21); // CASH| NETWORK
+        filter_whitelist.insert(0x31); // CASH | XTHIN| NETWORK
+        filter_whitelist.insert(0x29); // CASH | WITNESS| NETWORK
+        filter_whitelist.insert(0x39); // CASH | XTHIN | WITNESS| NETWORK
+        filter_whitelist.insert(0x25); // CASH | BLOOM| NETWORK
+        filter_whitelist.insert(0x35); // CASH | XTHIN | BLOOM| NETWORK
+        filter_whitelist.insert(0x2d); // CASH | WITNESS | BLOOM| NETWORK
+        filter_whitelist.insert(0x3d); // CASH | XTHIN | WITNESS | BLOOM| NETWORK
+        filter_whitelist.insert(0x23); // CASH | GETUTXOS| NETWORK
+        filter_whitelist.insert(0x33); // CASH | XTHIN | GETUTXOS| NETWORK
+        filter_whitelist.insert(0x2b); // CASH | WITNESS | GETUTXOS| NETWORK
+        filter_whitelist.insert(0x3b); // CASH | XTHIN | WITNESS | GETUTXOS| NETWORK
+        filter_whitelist.insert(0x27); // CASH | BLOOM | GETUTXOS| NETWORK
+        filter_whitelist.insert(0x37); // CASH | XTHIN | BLOOM | GETUTXOS| NETWORK
+        filter_whitelist.insert(0x2f); // CASH | WITNESS | BLOOM | GETUTXOS| NETWORK
+        filter_whitelist.insert(0x3f); // CASH | XTHIN | WITNESS | BLOOM | GETUTXOS| NETWORK
     }
     if (host != NULL && ns == NULL) showHelp = true;
     if (showHelp) fprintf(stderr, help, argv[0]);
