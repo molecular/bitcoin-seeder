@@ -1,3 +1,4 @@
 *.o
 dnsseed*
 dnsstats.log
+ipv4_nodes.dat

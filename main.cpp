@@ -22,10 +22,7 @@
 
 using namespace std;
 
-<<<<<<< HEAD
 bool fTestNet = false;
-=======
-bool fNolNet = false;
 int fQuiet = 0;
 
 inline void log_printf(const char* fmt, ...) {
@@ -35,7 +32,6 @@ inline void log_printf(const char* fmt, ...) {
   vprintf(fmt, argp);
   va_end(argp);
 }
->>>>>>> 5919326... add --quiet, fix stats output
 
 class CDnsSeedOpts {
 public:
