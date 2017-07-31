@@ -15,12 +15,11 @@ while IFS=' ' read -r host good lastSuccess p2h p8h p1d p7d p30d blocks svcs ver
 	if [[ "$port" -eq "$FILTER_PORT" ]]; then
 		if (((16#$svcs & 16#20) != 0)); then # service bit BITCOIN_CASH 1 << 5
 			# decide which file slot to output to (for prioritization)
-			if [[ "$good" -eq "1" ]]; then i=0;
-				if [[ ! $subver =~ ^\/Bitcoin\ ABC:0.14.6.*$ ]]; then
-					i=1;
+			i=2
+			if [[ "$good" -eq "1" ]]; then i=1;
+				if [[ $subver =~ Bitcoin\ ABC:0.14.6 ]]; then
+					i=0;
 				fi
-			else 
-				i=2; 
 			fi
 			echo $host:$port $good $(date -d @$lastSuccess) $p2h $p8h $p1d $p7d $p30d $blocks $svcs $version $subver >> $OUT/$i.filtered.dump
 			echo $host >> $OUT/$i.ipv4;
