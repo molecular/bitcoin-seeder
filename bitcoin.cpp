@@ -76,7 +76,7 @@ class CNode {
   void PushVersion() {
     int64 nTime = time(NULL);
     uint64 nLocalNonce = BITCOIN_SEED_NONCE;
-    int64 nLocalServices = 0;
+    int64 nLocalServices = NODE_CASH;
     CAddress me(CService("0.0.0.0"));
     BeginMessage("version");
     int nBestHeight = GetRequireHeight();
